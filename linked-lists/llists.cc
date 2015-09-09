@@ -36,6 +36,23 @@ Node * insert_head(Node *head, int data){
     return newN;
 }
 
+Node * insertNth(Node *head, int data, int position){
+    Node *newN = new Node;
+    newN->data = data;
+    if (position == 0){
+	newN->next = head;
+	return newN;
+    } else {
+	Node *iter = head;
+	for (int i = 1; i < position; i++) {
+	    iter=iter->next;
+	}
+	newN->next = iter->next;
+	iter->next = newN;
+    }
+    return head;
+}
+
 void Print(Node *head){
     Node *iter = new Node;
     iter = head;
@@ -52,6 +69,9 @@ int main(int argc, char *argv[])
     list1 = new Node;
     list1 = insert(NULL,2);
     list1 = insert_head(list1,3); // 3 -> 2
+    list1 = insertNth(list1,9,0);
+    list1 = insertNth(list1,8,1);
+    list1 = insertNth(list1,7,4);
     Print(list1);
     return 0;
 }
