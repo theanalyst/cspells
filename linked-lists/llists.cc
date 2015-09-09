@@ -53,6 +53,20 @@ Node * insertNth(Node *head, int data, int position){
     return head;
 }
 
+Node * Delete(Node *head,int position){
+    if (position == 0){
+	return head->next;
+    } else {
+	Node *iter = head;
+	for (int i = 1; i < position; i++) {
+	    iter = iter->next;
+	}
+	Node *tmp = iter->next;
+	iter->next = tmp->next;
+	return head;
+    }
+}
+
 void Print(Node *head){
     Node *iter = new Node;
     iter = head;
@@ -72,6 +86,9 @@ int main(int argc, char *argv[])
     list1 = insertNth(list1,9,0);
     list1 = insertNth(list1,8,1);
     list1 = insertNth(list1,7,4);
+    Print(list1);
+    cout << "Deleting at position 2" << endl;
+    Delete(list1,2);
     Print(list1);
     return 0;
 }
