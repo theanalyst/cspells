@@ -14,8 +14,8 @@ bool unique(string s){
 int main(int argc, char *argv[])
 {
     string s;
-    
-    if (unique(argv[1]))
+    cin >> s;
+    if (unique(s))
 	cout << "unique";
     else
 	cout << "not unique";
