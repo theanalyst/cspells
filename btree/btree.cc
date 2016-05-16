@@ -32,3 +32,10 @@ void inOrder(node *root) {
         inOrder(root->right);
     }
 }
+
+int height(node  *root){
+    if (root == nullptr)
+	return 0;
+
+    return std::max(height(root->left)+1,height(root->right)+1);
+}
