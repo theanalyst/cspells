@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -30,6 +31,25 @@ void inOrder(node *root) {
         inOrder(root->left);
         cout << root->data << " ";
         inOrder(root->right);
+    }
+}
+
+void levelOrder(node *root) {
+    if (root != nullptr){
+	std::queue<node *> lq;
+	lq.push(root);
+
+	while (!lq.empty()){
+	    cout << lq.front()->data << " ";
+	    node *iter = lq.front();
+	    lq.pop();
+	    if (!iter->left){
+		lq.push(iter->left);
+	    }
+	    if (!iter->right){
+		lq.push(iter->right);
+	    }
+	}
     }
 }
 
